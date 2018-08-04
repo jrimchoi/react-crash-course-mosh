@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "./App.css";
 import NavBar from "./components/navbar";
 import Counters from "./components/counters";
+import NameForm from "./components/nameform";
 
 class App extends Component {
   state = {
@@ -58,6 +59,7 @@ class App extends Component {
             onDelete={this.handleDelete}
             onIncrement={this.handleIncrement}
           />
+          <NameForm />
         </main>
       </React.Fragment>
     );
