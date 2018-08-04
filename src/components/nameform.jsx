@@ -18,6 +18,10 @@ class NameForm extends Component {
     this.setState({ error: this.props.getErrorMessage(value) });
   };
 
+  componentDidMount() {
+    this.setState({ error: this.props.getErrorMessage("") });
+  }
+
   render() {
     const { error } = this.state;
     return (
@@ -31,6 +35,11 @@ class NameForm extends Component {
               className="form-control"
               ref={node => (this.inputNode = node)}
             />
+            {error ? (
+              <div className="alert alert-danger m-2" role="alert">
+                {error}
+              </div>
+            ) : null}
           </label>
         </div>
         <div className="form-group row">
