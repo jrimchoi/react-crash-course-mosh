@@ -1,13 +1,25 @@
 import React, { Component } from "react";
 
 class NameForm extends Component {
-  state = {};
+  state = { error: null };
   handleSubmit = event => {
     event.preventDefault();
-    console.log(this.inputNode.value);
+    const value = this.inputNode.value;
+    const error = this.props.getErrorMessage(value);
+    if (error) {
+      alert(`error :${error}`);
+    } else {
+      alert(`succes :${value}`);
+    }
+  };
+
+  handleChange = event => {
+    const { value } = event.target;
+    this.setState({ error: this.props.getErrorMessage(value) });
   };
 
   render() {
+    const { error } = this.state;
     return (
       <form onSubmit={this.handleSubmit}>
         <div className="form-group row">
@@ -15,13 +27,18 @@ class NameForm extends Component {
             Name:
             <input
               type="text"
+              onChange={this.handleChange}
               className="form-control"
               ref={node => (this.inputNode = node)}
             />
           </label>
         </div>
         <div className="form-group row">
-          <button type="submit" className="btn btn-primary">
+          <button
+            disabled={Boolean(error)}
+            type="submit"
+            className="btn btn-primary"
+          >
             Submit
           </button>
         </div>

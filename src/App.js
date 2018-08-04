@@ -11,7 +11,8 @@ class App extends Component {
       { id: 2, value: 0 },
       { id: 3, value: 0 },
       { id: 4, value: 0 }
-    ]
+    ],
+    error: null
   };
 
   constructor() {
@@ -45,6 +46,16 @@ class App extends Component {
     this.setState({ counters });
   };
 
+  getErrorMessage = value => {
+    if (value.length < 3) {
+      return "Este campo deve conte ao menos 3 caracteres";
+    }
+    if (!value.includes("s")) {
+      return "A entrada desse campo deve conter o caracter `s`";
+    }
+    return null;
+  };
+
   render() {
     console.log("App - rendered");
     return (
@@ -59,7 +70,8 @@ class App extends Component {
             onDelete={this.handleDelete}
             onIncrement={this.handleIncrement}
           />
-          <NameForm />
+
+          <NameForm getErrorMessage={this.getErrorMessage} />
         </main>
       </React.Fragment>
     );
