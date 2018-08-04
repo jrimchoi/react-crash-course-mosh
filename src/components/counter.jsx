@@ -15,10 +15,6 @@ class Counter extends Component {
     this.setState({ count: this.state.count + 1 });
   };
 
-  doHandleIncrement = () => {
-    this.handleIncrement({ id: 1 });
-  };
-
   render() {
     return (
       <React.Fragment>
