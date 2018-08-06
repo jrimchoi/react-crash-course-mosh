@@ -7,16 +7,20 @@ class Counters extends Component {
     console.log("Counters rendered");
     return (
       <div>
-        <button onClick={onReset} className="btn btn-primary btn-sm m-2">
-          Reset
-        </button>
+        <div className="row">
+          <button onClick={onReset} className="btn btn-primary btn-sm m-2">
+            Reset
+          </button>
+        </div>
         {counters.map(counter => (
-          <Counter
-            key={counter.id}
-            counter={counter}
-            onDelete={onDelete}
-            onIncrement={onIncrement}
-          />
+          <div className="row">
+            <Counter
+              key={counter.id}
+              counter={counter}
+              onDelete={onDelete}
+              onIncrement={onIncrement}
+            />
+          </div>
         ))}
       </div>
     );
